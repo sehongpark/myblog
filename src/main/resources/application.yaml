@@ -1,0 +1,5 @@
+spring:
+  # DB 설정
+  h2:
+    console:
+      enabled: true
