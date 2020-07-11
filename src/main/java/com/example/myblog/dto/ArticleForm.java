@@ -1,6 +1,7 @@
 package com.example.myblog.dto;
 
 import com.example.myblog.entity.Article;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

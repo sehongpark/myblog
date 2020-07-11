@@ -28,4 +28,10 @@ public class Article {
         this.title = title;
         this.content = content;
     }
+
+    // 엔티티 객체 정보를 수정!
+    public void rewrite(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

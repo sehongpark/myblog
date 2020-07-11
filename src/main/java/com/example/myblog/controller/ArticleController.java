@@ -35,7 +35,8 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/new") // GET 요청이 해당 url로 오면, 아래 메소드를 수행!
-    public String newArticle() {
+    public String newArticle(Model model) {
+        model.addAttribute("article", new ArticleForm(new Article(-1L, "", "")));
         return "articles/new"; // 보여줄 뷰 페이지
     }
 
