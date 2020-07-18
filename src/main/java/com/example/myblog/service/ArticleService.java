@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service // 서비스 객체 선언! 서비스란?
 public class ArticleService {
+
     private final ArticleRepository articleRepository;
 
     @Transactional // 트랜잭션 처리! 트랜잭션이란?
@@ -32,6 +33,16 @@ public class ArticleService {
         log.info("saved: " + saved.toString());
 
         return saved;
+    }
+
+    @Transactional
+    public Long destroy(Long id) {
+        Article target = articleRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("해당 Article이 없습니다.")
+                );
+        articleRepository.delete(target);
+        return target.getId();
     }
 }
 

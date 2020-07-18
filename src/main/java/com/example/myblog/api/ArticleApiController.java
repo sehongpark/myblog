@@ -69,4 +69,9 @@ public class ArticleApiController {
         // 아이디 반환
         return saved.getId();
     }
+
+    @DeleteMapping("/api/articles/{id}") // HTTP의 DELETE 메소드로 "/api/articles{id}" 요청이 온다면,
+    public Long destroy(@PathVariable Long id) {
+        return articleService.destroy(id); // 서비스 객체가 destroy()를 수행!
+    }
 }
