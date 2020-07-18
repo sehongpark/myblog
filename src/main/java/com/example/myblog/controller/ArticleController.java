@@ -50,7 +50,11 @@ public class ArticleController {
     public String show(@PathVariable Long id, // url의 {id} 값을 변수화!
                        Model model) {
         // id를 통해 Article을 가져옴!
-        Article article = articleRepository.findById(id).orElse(null);
+        Article article = articleRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("해당 Article이 없습니다.")
+                );
+
         // article을 뷰 페이지로 전달
         model.addAttribute("article", article);
         return "articles/show";
