@@ -3,3 +3,9 @@ spring:
   h2:
     console:
       enabled: true
+
+  # JPA 설정
+  jpa:
+    show-sql: true # JPA 수행 쿼리를 보여줌!
+    properties:
+      hibernate.format_sql: true # 보기 좋게 출력!
