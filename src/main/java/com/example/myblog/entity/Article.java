@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter // 게터를 자동 생성!
 @ToString // toString() 자동 생성!
@@ -21,6 +22,9 @@ public class Article extends BaseTime {
 
     @Column(columnDefinition = "TEXT", nullable = false) // 텍스트 타입, 비어있으면 안됨!
     private String content;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article")
+    private List<Comment> comments;
 
     @Builder // 빌더 패턴 적용! 추후 사용 시, 설명..!
     public Article(Long id, String title, String content) {

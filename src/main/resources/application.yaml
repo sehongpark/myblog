@@ -9,3 +9,14 @@ spring:
     show-sql: true # JPA 수행 쿼리를 보여줌!
     properties:
       hibernate.format_sql: true # 보기 좋게 출력!
+
+  # 칼라풀 로그 출력! - https://jojoldu.tistory.com/158
+  output:
+    ansi:
+      enabled: always
+
+# 로깅
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: trace
