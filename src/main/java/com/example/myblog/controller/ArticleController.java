@@ -57,6 +57,7 @@ public class ArticleController {
 
         // article을 뷰 페이지로 전달
         model.addAttribute("article", article);
+        model.addAttribute("comments", article.getComments());
         return "articles/show";
     }
 

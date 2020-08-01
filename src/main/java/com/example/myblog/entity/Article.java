@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter // 게터를 자동 생성!
-@ToString // toString() 자동 생성!
 @NoArgsConstructor // 디폴트 생성자 넣어 줌!
 @Entity // DB 테이블에 저장될 클래스 임!
 public class Article extends BaseTime {
@@ -37,5 +36,15 @@ public class Article extends BaseTime {
     public void rewrite(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    @Override // toString() 메소드를 직접 오버라이딩(재정의) 함!
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", comments=" + (comments == null ? null : comments.size()) +
+                '}';
     }
 }
