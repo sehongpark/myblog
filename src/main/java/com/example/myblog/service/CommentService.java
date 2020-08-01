@@ -35,4 +35,24 @@ public class CommentService {
         log.info("written: " + comment.toString());
         return commentRepository.save(comment);
     }
+
+    @Transactional
+    public Comment update(Long id, CommentForm form) {
+        // 수정 댓글 폼을 엔티티로 변경
+        log.info("form: " + form.toString());
+        Comment edited = form.toEntity();
+        log.info("edited: " + form.toString());
+
+        // DB에서 기존 댓글을 가져옴
+        Comment target = commentRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("해당 댓글이 없습니다.")
+                );
+        log.info("target: " + target.toString());
+
+        // 기존 댓글을 수정!
+        target.rewrite(edited.getContent());
+        log.info("updated: " + target.toString());
+        return commentRepository.save(target);
+    }
 }

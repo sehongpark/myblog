@@ -8,10 +8,7 @@ import com.example.myblog.repository.CommentRepository;
 import com.example.myblog.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,5 +24,13 @@ public class CommentApiController {
         Comment saved = commentService.create(articleId, form);
         log.info("saved: " + saved.toString());
         return saved.getId();
+    }
+
+    @PutMapping("/api/comments/{id}")
+    public Long update(@PathVariable Long id,
+                       @RequestBody CommentForm form) {
+        // 서비스 객체가 댓글 수정
+        Comment updated = commentService.update(id, form);
+        return updated.getId();
     }
 }

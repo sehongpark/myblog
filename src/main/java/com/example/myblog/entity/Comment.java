@@ -29,4 +29,9 @@ public class Comment extends BaseTime {
     public void stickTo(Article article) {
         this.article = article;
     }
+
+    // 해당 댓글의 내용을 새것으로 갱신!
+    public void rewrite(String content) {
+        this.content = content;
+    }
 }
