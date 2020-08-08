@@ -1,6 +1,3 @@
-# OAuth2
-/src/main/resources/application-oauth.yaml
-
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -32,3 +29,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# OAuth2
+/src/main/resources/application-oauth.yaml
