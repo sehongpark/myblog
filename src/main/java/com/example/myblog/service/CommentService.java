@@ -32,7 +32,7 @@ public class CommentService {
 
         // 댓글 엔티티에 게시글 엔티티를 등록
         comment.stickTo(article);
-        log.info("written: " + comment.toString());
+//        log.info("written: " + comment.toString());
         return commentRepository.save(comment);
     }
 

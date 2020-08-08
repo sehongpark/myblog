@@ -12,6 +12,19 @@ var comment = {
       _this.create();
     });
 
+    // 버튼 토글 기능 추가
+    const editBtns = document.querySelectorAll('.comment-edit-btn');
+
+    editBtns.forEach(function(item) {
+      item.addEventListener('click', function() {
+        if (item.innerHTML == '수정') {
+          item.innerHTML = '취소';
+        } else {
+          item.innerHTML = '수정';
+        }
+      });
+    });
+
     // 수정 버튼 변수화
     const updateBtns = document.querySelectorAll('.comment-update-btn');
 

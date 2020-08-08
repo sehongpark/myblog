@@ -1,4 +1,8 @@
 spring:
+  # OAuth 가져오기
+  profiles:
+    include: oauth
+
   # DB 설정
   h2:
     console:
