@@ -14,7 +14,7 @@ spring:
     properties:
       hibernate.format_sql: true # 보기 좋게 출력!
 
-  # 칼라풀 로그 출력! - https://jojoldu.tistory.com/158
+  # 칼라풀 로그 출력! - https://jojoldu.  tistory.com/158
   output:
     ansi:
       enabled: always
