@@ -1,5 +1,5 @@
 # OAuth2
-application-oauth.yaml
+/src/main/resources/application-oauth.yaml
 
 .gradle
 build/
