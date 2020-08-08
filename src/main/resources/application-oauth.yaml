@@ -1,0 +1,9 @@
+# Google OAuth2
+security:
+  oauth2:
+    client:
+      # 해당 정보는 보안 처리 되어야 함!
+      registration.google:
+        client-id: 134757963115-ne48ldv2ib4bc5c14ufd5ev0e2b9r0f1.apps.googleusercontent.com
+        client-secret: -AYB10oK-7JRPbaGxeyRICPh
+        scope: email, profile # 단일 OAuth2Service를 위함(p. 174)
