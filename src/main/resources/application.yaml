@@ -1,5 +1,5 @@
 spring:
-  # OAuth 가져오기
+  # OAuth 가져오기..!
   profiles:
     include: oauth
 
