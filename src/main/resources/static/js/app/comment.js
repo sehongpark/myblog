@@ -116,7 +116,7 @@ var comment = {
       if (response.ok) { // 성공
         alert('댓글이 삭제 되었습니다.');
         // DB에서 사라졌으나, 화면에는 남아있음! 이를 위해, CSS로 화면에서 감춤!
-        document.querySelector(`#comment-${commentId}`).style.display = 'none';
+        document.querySelector(`#comments-${commentId}`).style.display = 'none';
       } else { // 실패
         alert(JSON.stringify(response));
       }
