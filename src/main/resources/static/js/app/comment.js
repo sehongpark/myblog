@@ -35,6 +35,15 @@ var comment = {
         _this.update(form); // 해당 폼으로, 업데이트 수행한다!
       });
     });
+
+    // 삭제 버튼 클릭 시!
+    const destroyBtns = document.querySelectorAll('.comment-destroy-btn');
+    destroyBtns.forEach(function(item) {
+      item.addEventListener('click', function() {
+        var commentId = this.getAttribute('value'); // 해당 a태그의 value 값(댓글 id)을 저장
+        _this.destroy(commentId);
+      });
+    });
   },
 
   // 댓글 등록
@@ -95,6 +104,22 @@ var comment = {
         alert('댓글 수정 실패..!');
       }
       window.location.reload(true); // 페이지 리로드
+    });
+  },
+
+  // 댓글 삭제
+  destroy: function(commentId) {
+    // 요청을 보냄
+    fetch('/api/comments/' + commentId, {
+      method: 'DELETE',
+    }).then(function(response) { // 응답 처리
+      if (response.ok) { // 성공
+        alert('댓글이 삭제 되었습니다.');
+        // DB에서 사라졌으나, 화면에는 남아있음! 이를 위해, CSS로 화면에서 감춤!
+        document.querySelector(`#comment-${commentId}`).style.display = 'none';
+      } else { // 실패
+        alert(JSON.stringify(response));
+      }
     });
   }
 };

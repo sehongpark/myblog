@@ -55,4 +55,10 @@ public class CommentService {
         log.info("updated: " + target.toString());
         return commentRepository.save(target);
     }
+
+    @Transactional
+    public Long destroy(Long id) {
+        commentRepository.deleteById(id);
+        return id;
+    }
 }

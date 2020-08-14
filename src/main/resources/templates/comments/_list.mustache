@@ -8,10 +8,15 @@
           <small>
             <!-- 부트스트랩 collapse 활용, https://getbootstrap.com/docs/4.5/components/collapse/ -->
             <a href="#" class="comment-edit-btn" data-toggle="collapse" data-target=".multi-collapse-{{id}}">수정</a>
+
+            <!-- 삭제 버튼 추가 -->
+            <a href="#comments" class="comment-destroy-btn" value="{{id}}">삭제</a>
           </small>
         </h5>
+
         <!-- 보기 모드 -->
         <p class="collapse multi-collapse-{{id}} show">{{content}}</p>
+
         <!-- 수정 모드 -->
         <form class="collapse multi-collapse-{{id}}">
           <div class="form-group">

@@ -33,4 +33,9 @@ public class CommentApiController {
         Comment updated = commentService.update(id, form);
         return updated.getId();
     }
+
+    @DeleteMapping("/api/comments/{id}")
+    public Long destroy(@PathVariable Long id) {
+        return commentService.destroy(id);
+    }
 }
