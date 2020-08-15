@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers( // 아래 패턴의 URL은,
                         "/",
+                        "/articles",
+                        "/init",
                         "/css/**",
                         "/images/**",
                         "/js/**",

@@ -1,0 +1,21 @@
+<!-- 로그인 상태 창 -->
+<ul class="navbar-nav ml-auto">
+
+  <!-- 로그인이 안된 경우(userName이 없다면?) -->
+  {{^userName}}
+    <!-- 로그인 버튼 -->
+    <li class="nav-item active">
+      <!-- "/oauth2/authorization/google", 스프링 시큐리티 OAuth2의 구글 로그인 주소 -->
+      <a class="nav-link" href="/oauth2/authorization/google">로그인</a>
+    </li>
+  {{/userName}}
+
+  <!-- 로그인 된 경우(userName이 있다면?) -->
+  {{#userName}}
+    <!-- 로그아웃 버튼 -->
+    <li class="nav-item active">
+      <!-- "/logout", 스프링 시큐리티의 기본 로그아웃 URL! 스프링 시큐리티에서 변경 가능 -->
+      <a class="nav-link" href="/logout">로그아웃</a>
+    </li>
+  {{/userName}}
+</ul>

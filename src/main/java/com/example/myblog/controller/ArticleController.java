@@ -1,5 +1,6 @@
 package com.example.myblog.controller;
 
+import com.example.myblog.config.auth.SessionUser;
 import com.example.myblog.dto.ArticleForm;
 import com.example.myblog.entity.Article;
 import com.example.myblog.repository.ArticleRepository;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j // 로깅(logging) 기능 추가! Lombok 플러그인 설치 필요!
@@ -21,6 +23,9 @@ public class ArticleController {
     // 리파지터리 객체 자동 삽입 됨! 위에서 @RequiredArgsConstructor 했음!
     private final ArticleRepository articleRepository;
 
+    // HTTP 통신의 Session 객체가 자동 삽입! 위에서 @RequiredArgsConstructor 했음!
+    private final HttpSession httpSession;
+
     @GetMapping("/articles") // 해당 요청을 처리하도록, 메소드를 등록!
     public String index(Model model) { // 뷰 페이지로 데이터 전달을 위한 Model 객체 자동 삽입 됨!
         // 모든 Article을 가져옴
@@ -29,6 +34,14 @@ public class ArticleController {
 
         // 뷰 페이지로 articleList 전달!
         model.addAttribute("articles", articleList);
+
+        // 세션에서 키가 "user"인 객체를 가져와, 이를 캐스팅(Object -> SessionUser)해 가져옴!
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+        // 모델에 사용자 이름을 등록!
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
 
         // 뷰 페이지 설정
         return "articles/index";
